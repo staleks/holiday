@@ -37,7 +37,6 @@ public class HolidayController {
 
     @RequestMapping("/resorts")
     public String getResorts(Model model) {
-        LOG.info("Showing holiday resorts");
         List<DestinationDTO> destinations = destinationResource.getDestinations();
         model.addAttribute("destinations", destinations);
         return "resorts";
@@ -45,7 +44,9 @@ public class HolidayController {
 
     @RequestMapping("/resort/{destinationId}")
     public String getOneResort(@PathVariable("destinationId") Long destinationId, Model model) {
-        LOG.info("Showing one holiday resort: {}", destinationId);
+        DestinationDTO destinationDTO = destinationResource.getOneDestination(destinationId);
+        model.addAttribute("destinationInfo", destinationDTO);
+
         Map<String, HolidayResortInfoPerDayDTO> mapPerDay = new HashMap<>();
         List<QuotingDTO> quotingDTOs = quotingResource.getQuoting(destinationId);
         for (QuotingDTO quotingItem: quotingDTOs) {
