@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <style>
+        .container-j {
+            margin-top: 80px;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Jatheon Travel Agency</title>
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css"></link>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"></link>
+
+    <link href="/webjars/bootstrap/4.0.0-beta.2/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">
+            Jatheon Travel Agency
+        </a>
+    </nav>
+    <div class="container container-j">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Temperature</th>
+                        <th scope="col">Weather type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="instance: ${resortInfoPerDay}">
+                        <td th:text="${instance.key}"></td>
+                        <td th:text="${instance.value.price}"></td>
+                        <td th:text="${instance.value.temperature}"></td>
+                        <td th:text="${instance.value.weatherType}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.js"></script>
+
+</body>
+</html>
